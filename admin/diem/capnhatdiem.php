@@ -256,8 +256,7 @@ $conn = $connect->connect();
                         <td><input style="width:100px" type="text" name="diem3[]" value="<?php echo "$row[Diem1Tiet1]"; ?>" /></td>
                         <td><input style="width:100px" type="text" name="diem4[]" value="<?php echo "$row[Diem1Tiet2]"; ?>" /></td>
                         <td><input style="width:100px" type="text" name="diem5[]" value="<?php echo "$row[DiemThi]"; ?>" /></td>
-                        <td><input style="width:100px" type="text" name="diem6[]"
-                                readonly="readonly" /></td>
+                        <td><input style="width:100px" type="text" name="diem6[]" value="<?php echo "$row[DiemTB]" ?>" readonly="readonly" /></td>
 
                         </tr>
                 <?php

@@ -103,8 +103,8 @@ $conn = $connect->connect();
                     <?php
                         exit();
                     }
-                    $p22 = "/^[0-1-2-3-4-5-6-7-8-9-10]$/";
-                    if (preg_match($p22, $_POST["diem2$i"])) {
+                    $p2 = "/^[0-1-2-3-4-5-6-7-8-9-10]$/";
+                    if (preg_match($p2, $_POST["diem2$i"])) {
                         $p2 = $_POST["diem2$i"];
                     } else {
                     ?>
@@ -115,9 +115,9 @@ $conn = $connect->connect();
                     <?php
                         exit();
                     }
-                    $t11 = "/^[0-1-2-3-4-5-6-7-8-9-10]$/";
-                    if (preg_match($t11, $_POST["diem3$i"])) {
-                        $t11 = $_POST["diem3$i"];
+                    $t1 = "/^[0-1-2-3-4-5-6-7-8-9-10]$/";
+                    if (preg_match($t1, $_POST["diem3$i"])) {
+                        $t1 = $_POST["diem3$i"];
                     } else {
                     ?>
                         <script type="text/javascript">
@@ -127,8 +127,8 @@ $conn = $connect->connect();
                     <?php
                         exit();
                     }
-                    $t22 = "/^[0-1-2-3-4-5-6-7-8-9-10]$/";
-                    if (preg_match($t22, $_POST["diem4$i"])) {
+                    $t2 = "/^[0-1-2-3-4-5-6-7-8-9-10]$/";
+                    if (preg_match($t2, $_POST["diem4$i"])) {
                         $t2 = $_POST["diem4$i"];
                     } else {
                     ?>
@@ -153,7 +153,7 @@ $conn = $connect->connect();
         <?php
                         exit();
                     }
-                    $tb = $_POST["diem6$i"];
+                    $tb = ($mieng + $p1 + $p2 + ($t1 + $t2) * 2 + $d * 3) / 10;
                     $sql = "insert into diem(MaHocKy,MaMonHoc,MaHS,MaLopHoc,DiemMieng,Diem15Phut1,Diem15Phut2,Diem1Tiet1,Diem1Tiet2,DiemThi,DiemTB )
  							values('" . $hk . "','" . $mon . "','" . $ma . "','" . $lop . "','" . $mieng . "','" . $p1 . "','" . $p2 . "','" . $t1 . "','" . $t2 . "','" . $d . "','" . $tb . "')";
                     $results1 = mysqli_query($conn, $sql);
@@ -181,7 +181,15 @@ $conn = $connect->connect();
                 <td>Điểm TB</td>
             </tr>
             <?php
-            $query = "select * from hocsinh";
+            $query = "SELECT * FROM hocsinh hs 
+             WHERE hs.MaLopHoc = '$dayhoc' 
+             AND hs.MaHS NOT IN (
+                 SELECT d.MaHS 
+                 FROM diem d 
+                 WHERE d.MaMonHoc = '$monhoc' 
+                 AND d.MaHocKy = '$hk' 
+                 AND d.MaLopHoc = '$dayhoc'
+             )";
             $results = mysqli_query($conn, $query);
             ?>
             <form action="add_diemhs.php " method="post">
@@ -222,7 +230,7 @@ $conn = $connect->connect();
                         <td><input style="width:100px" type="text" name="diem3<?php echo $i; ?>" /></td>
                         <td><input style="width:100px" type="text" name="diem4<?php echo $i; ?>" /></td>
                         <td><input style="width:100px" type="text" name="diem5<?php echo $i; ?>" /></td>
-                        <td><input style="width:100px" type="text" name="diem6<?php echo $i; ?>" /></td>
+                        <td><input style="width:100px" type="text" name="diem6<?php echo $i; ?>" readonly="readonly" /></td>
 
                         </tr>
                 <?php
