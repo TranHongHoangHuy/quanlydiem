@@ -178,7 +178,6 @@ $conn = $connect->connect();
                 <td>Điểm 1 Tiết</td>
                 <td>Điểm 1 Tiết</td>
                 <td>Điểm Thi</td>
-                <td>Điểm TB</td>
             </tr>
             <?php
             $query = "SELECT * FROM hocsinh hs 
@@ -230,7 +229,6 @@ $conn = $connect->connect();
                         <td><input style="width:100px" type="text" name="diem3<?php echo $i; ?>" /></td>
                         <td><input style="width:100px" type="text" name="diem4<?php echo $i; ?>" /></td>
                         <td><input style="width:100px" type="text" name="diem5<?php echo $i; ?>" /></td>
-                        <td><input style="width:100px" type="text" name="diem6<?php echo $i; ?>" readonly="readonly" /></td>
 
                         </tr>
                 <?php

@@ -1,28 +1,34 @@
-﻿<div class="banner">
-
-
-	<body bgcolor="#CAFFFF">
+﻿	<body bgcolor="#CAFFFF">
 		<?php
 		session_start();
 		echo '<br/>';
 		?>
-		<div style="text-align:right;margin-right:186px ">
+		<div style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large; padding-bottom: 5px">
 			<?php
-			echo "<b>Chào Bạn " . $_SESSION['ses_MaHS'];
+			echo "<b>CHÀO MỪNG BẠN " . $_SESSION['ses_TenHS'];
 			echo "</b>"
 			?>
 		</div>
 		<style type="text/css">
-			#menu ul {
-				margin-left: 145px;
-
+			#menu {
+				text-align: center;
+				/* Căn giữa nội dung trong menu */
 			}
 
-			.menu {}
+			#menu ul {
+				display: inline-block;
+				/* Để ul là một khối nội dòng để có thể căn giữa */
+				padding: 0;
+				/* Xóa khoảng trống mặc định của ul */
+				margin: 0;
+				/* Xóa khoảng cách mặc định của ul */
+			}
 
 			#menu ul li {
-				display: inline;
-
+				display: inline-block;
+				/* Để các li nằm ngang */
+				margin: 0;
+				/* Xóa khoảng cách mặc định */
 			}
 
 			#menu ul a {

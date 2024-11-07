@@ -45,6 +45,7 @@ if (isset($_POST['hs'])) {
 		} else {
 			$data = mysqli_fetch_assoc($results);
 			$_SESSION['ses_MaHS'] = $data['MaHS'];
+			$_SESSION['ses_TenHS'] = $data['TenHS'];
 			$_SESSION['ses_passwordhs'] = $data['passwordhs'];
 			header("location:qlhs.php");
 			exit();
